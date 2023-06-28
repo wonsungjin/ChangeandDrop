@@ -29,7 +29,7 @@ public class Sphere : MonoBehaviour
         else if (velocity.x > 4) velocity.x = 4;
         rb.velocity = velocity;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//색이 다른곳에 닿을시 오브젝트풀에 다시 넣고 리스트에서 제거.
     {
         if (other.CompareTag("BlueZone") && GameMGR.Instance.sphereColor != SphereColor.blue) 
         { 
@@ -43,7 +43,7 @@ public class Sphere : MonoBehaviour
         }
         if (GameMGR.Instance.sphereList.Count == 0) GameMGR.Instance.ReStartUI();
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//존 밖으로 나갈시 해당 존의 곱하기갯수만큼 복제
     {
         if(other.CompareTag("BlueZone") &&other.GetComponent<Copy>().number>=copyNum)
         {

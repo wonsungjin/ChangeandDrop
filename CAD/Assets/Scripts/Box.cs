@@ -49,7 +49,7 @@ public class Box : MonoBehaviour
         }
         while (true)
         {
-            if (boxAction == BoxA.move)
+            if (boxAction == BoxA.move)//상자 좌우 이동시
             {
                 yield return time;
                 if (transform.position.x < -8.1f && !isMove) isMove = true;
@@ -58,7 +58,7 @@ public class Box : MonoBehaviour
                 else transform.Translate(-0.2f, 0, 0);
                 yield return null;
             }
-            else if (boxAction == BoxA.trun)
+            else if (boxAction == BoxA.trun)// 상자 회전시 = 게임시작
             {
                 if (boxRotateZ > 0 && transform.position.x <= -4.5f)
                 {
@@ -78,16 +78,16 @@ public class Box : MonoBehaviour
                 else break;
                 yield return null;
             }
-            else
+            else// 아닐경우 오픈&닫기
             {
                 yield return time;
-                if (boxRotateX > -90 && boxAction == BoxA.close)
+                if (boxRotateX > -90 && boxAction == BoxA.close)//상자닫기
                 {
                     right.transform.Rotate(closeVettor);
                     left.transform.Rotate(closeVettor);
                     boxRotateX -= 3f;
                 }
-                else if (boxRotateX < 10 && boxAction == BoxA.open)
+                else if (boxRotateX < 10 && boxAction == BoxA.open)//상자열기
                 {
                     right.transform.Rotate(openVettor);
                     left.transform.Rotate(openVettor);

@@ -76,16 +76,16 @@ public class GameMGR : MonoBehaviour
             ReStart();
         }
     }
-    public void ReStartUI()
+    public void ReStartUI()//리스타트 ui 활성화
     {
          restart.SetActive(true); 
     }
-    public void ReStart()
+    public void ReStart()//신을 재로드시켜 게임재시작
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MouseClick()
+    public void MouseClick()// 마우스클릭 시 공색변경 및 게임시작
     {
         box.BoxAction(BoxA.trun);
         if (sphereList.Count == 0) return;
@@ -117,7 +117,7 @@ public class GameMGR : MonoBehaviour
             }
         }
     }
-    public void ChangeColor(Sphere obj, SphereColor sc)
+    public void ChangeColor(Sphere obj, SphereColor sc)// 공색 변경
     {
         if(sc == SphereColor.yellow)
         {
@@ -132,28 +132,24 @@ public class GameMGR : MonoBehaviour
             obj.color = SphereColor.blue;
         }
     }
-    public void AddSphere(Sphere obj)
+    public void AddSphere(Sphere obj)//공리스트에  추가 및 제거
     {
         if (sphereList.Contains(obj))
             sphereList.Remove(obj);
         else
             sphereList.Add(obj);
     }
-    public float GetMinPos()
+    public float GetMinPos()// 젤 밑에있는공의 y값
     {
         return min;
     }
-    public void SetMinPos(GameObject obj)
+    public void SetMinPos(GameObject obj)// 공중에 제일 밑에있는 공을 카메라 타겟으로 삼음
     {
         moveCam.target = obj.transform;
         min = obj.transform.position.y;
         gameProgress = min;
     }
-    public void GameProGameProgress()
-    {
-
-    }
-    public void Create_Sphere(int num, int copy=0, GameObject pos= null)
+    public void Create_Sphere(int num, int copy=0, GameObject pos= null)//단일 복제와 여러개 복제 선택가능
     {
         if(pos != null)
         {
@@ -172,7 +168,7 @@ public class GameMGR : MonoBehaviour
 
         }
     }
-    private void Invoke_Create_Sphere()
+    private void Invoke_Create_Sphere()//한번에 복제하면 리지드바디로 튕겨져 나가기때문에 일정시간후에 복제
     {
         count++;
         Sphere obj = null;
@@ -189,7 +185,7 @@ public class GameMGR : MonoBehaviour
     public int clearNum=1000;
     bool clear;
     Coroutine co_Invoke;
-    public void Clear()
+    public void Clear()// 상자에 공이들어갈때마다 호출되는 함수
     {
         if (clearNum > 0)
         {
@@ -212,7 +208,7 @@ public class GameMGR : MonoBehaviour
             clearText.text = "Clear";
         }
     }
-    IEnumerator Invoke_End()
+    IEnumerator Invoke_End()//공을 다 못채웠을시 3초후 재시작가능
     {
         yield return new WaitForSeconds(3f);
         GameMGR.Instance.ReStartUI();

@@ -6,7 +6,7 @@ public class ObjectPool : MonoBehaviour
 {
     Dictionary<string, List<Sphere>> table = new Dictionary<string, List<Sphere>>();
 
-    public Sphere CreatePrefab(Sphere prefab, Vector3 position, Quaternion rotation)
+    public Sphere CreatePrefab(Sphere prefab, Vector3 position, Quaternion rotation)//Sphere 클래스 딕셔너리 오브젝트 풀링 
     {
         List<Sphere> list = null;
         Sphere instance = null;

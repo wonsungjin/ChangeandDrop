@@ -22,12 +22,12 @@ public class Bluck : MonoBehaviour
     {
         target = gameObject.transform;
     }
-    public void TextResize()
+    public void TextResize()//
     {
         text.text = (num- reSize).ToString();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//블럭에 공들이 닿을때마다 각도가 점점휘어집니다.
     {
         if (other.CompareTag("Sphere")&&!list.Contains(other.gameObject))
         {
@@ -56,12 +56,12 @@ public class Bluck : MonoBehaviour
             }
         }
     }
-    IEnumerator Invoke_End()
+    IEnumerator Invoke_End()//공의 갯수가 모자를때 3초후에 리스타드 가능
     {
         yield return new WaitForSeconds(3f);
         GameMGR.Instance.ReStartUI();
     }
-    public void Broken()
+    public void Broken()//벽돌이 부서지는 이펙트
     {
         if (isBroken) return;
         for(int i=0;i<list.Count;i++) list[i].GetComponent<Sphere>().stop = false;

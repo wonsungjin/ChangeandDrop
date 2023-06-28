@@ -5,9 +5,9 @@ using UnityEngine;
 public class MoveCam : MonoBehaviour
 {
     Vector3 pos = Vector3.zero;
-    float smoothSpeed = 0.05f;
+    float smoothSpeed = 0.05f;//보간 스피드
     public Transform target;
-    float speed= -85f;
+    float speed= -85f;//게임종료시 마지막 카메라 이동스피드
     private void LateUpdate()
     {
         if(GameMGR.Instance.end)
