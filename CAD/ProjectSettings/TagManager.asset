@@ -3,12 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Jump
+  - Right
+  - Left
+  - BlueZone
+  - YellowZone
+  - Sphere
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - bluck
   - Water
   - UI
   - 
